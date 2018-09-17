@@ -1,6 +1,6 @@
 # EleanorY_ActionAssignment
 ### Freeway Clone Game
-[Ver1.1_20180916](https://jiaxi-yang.itch.io/freeway-clone)
+[Ver1.1_20180916](https://jiaxi-yang.itch.io/freeway-clone)/br
    What I have so far: 
      * 2 Players that can move and collide with cars;
      * Scores
