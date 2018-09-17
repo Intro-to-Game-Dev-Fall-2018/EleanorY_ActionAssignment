@@ -3,7 +3,6 @@
 [Ver1.1_20180916](https://jiaxi-yang.itch.io/freeway-clone)
 
     What I have so far: 
-    
      - 2 Players that can move and collide with cars;</br>
      - Scores; </br>
      - 11 Car prefabs with some crappy sprites; </br>
