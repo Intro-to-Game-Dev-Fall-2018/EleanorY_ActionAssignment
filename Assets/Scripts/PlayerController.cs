@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
 		{
 			crashPositionY = transform.position.y;
 			getHurt = true;
-			PlayerAnimator.SetTrigger("GetHurt");
+			PlayerAnimator.SetBool("GetHurt", true);
 			BackUpAccumulate += backupDistance;
 		}
 
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
 			} else 
 			{
 				getHurt = false;
-				PlayerAnimator.SetTrigger("Idle");
+				PlayerAnimator.SetBool("GetHurt", false);
 				BackUpAccumulate = 0;
 				timer = 1.5f;
 			}
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
 				initialY,
 				transform.position.z);
 			getHurt = false;
-			PlayerAnimator.SetTrigger("Idle");
+			PlayerAnimator.SetBool("GetHurt", false);
 			BackUpAccumulate = 0;
 			timer = 1.5f;
 		}
