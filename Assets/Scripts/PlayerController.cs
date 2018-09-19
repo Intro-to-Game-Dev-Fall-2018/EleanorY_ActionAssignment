@@ -23,15 +23,19 @@ public class PlayerController : MonoBehaviour
 
 	private float timer;
 	private bool GameStart = false;
+
+
+	private Animator PlayerAnimator;
 	
 	
 	
 	// Use this for initialization
 	void Start ()
 	{
-		initialY = -4.65f;
+		initialY = -4.9f;
 		count = 0;
 		timer = 2.0f;
+		PlayerAnimator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -40,6 +44,8 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKeyUp("2"))
 		{
 			GameStart = true;
+			PlayerAnimator.SetTrigger("Start");
+
 		}
 		if (GameStart == true)
 		{
@@ -96,6 +102,7 @@ public class PlayerController : MonoBehaviour
 		{
 			crashPositionY = transform.position.y;
 			getHurt = true;
+			PlayerAnimator.SetTrigger("GetHurt");
 			BackUpAccumulate += backupDistance;
 		}
 
@@ -115,6 +122,7 @@ public class PlayerController : MonoBehaviour
 			} else 
 			{
 				getHurt = false;
+				PlayerAnimator.SetTrigger("Idle");
 				BackUpAccumulate = 0;
 				timer = 1.5f;
 			}
@@ -126,6 +134,7 @@ public class PlayerController : MonoBehaviour
 				initialY,
 				transform.position.z);
 			getHurt = false;
+			PlayerAnimator.SetTrigger("Idle");
 			BackUpAccumulate = 0;
 			timer = 1.5f;
 		}
