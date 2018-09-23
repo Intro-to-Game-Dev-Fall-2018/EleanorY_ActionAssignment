@@ -12,13 +12,16 @@ public class GameManager : MonoBehaviour
 	public GameObject LevelText;
 	public GameObject Score_1;
 	public GameObject Score_2;
+
+	private AudioSource Bgm;
 	
 	// Use this for initialization
 	void Start ()
 	{
 		cars = GameObject.FindGameObjectsWithTag("Car");
 		carScripts = new CarController[cars.Length];
-	
+		Bgm = GetComponent<AudioSource>();
+
 	}
 
 	
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour
 				carScripts[i] = cars[i].GetComponent<CarController>();
 				carScripts[i].enabled = true;
 			}
+
+			Bgm.Play();
 		}
 	}
 }

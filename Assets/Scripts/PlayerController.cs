@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
 
 
 	private Animator PlayerAnimator;
-	
+	private AudioSource PlayerAudioSource;
+	public AudioClip ScoreSE;
+	public AudioClip HurtSE;
 	
 	
 	// Use this for initialization
@@ -36,11 +38,12 @@ public class PlayerController : MonoBehaviour
 		count = 0;
 		timer = 2.0f;
 		PlayerAnimator = GetComponent<Animator>();
+		PlayerAudioSource = GetComponent<AudioSource>();
+		PlayerAudioSource.clip = HurtSE;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(timer);
 		if (Input.GetKeyUp("2"))
 		{
 			GameStart = true;
@@ -86,8 +89,11 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
+		
 		if (other.CompareTag("Background"))
 		{
+			PlayerAudioSource.clip = ScoreSE;
+			PlayerAudioSource.Play();
 			transform.position = new Vector3(
 				transform.position.x,
 				initialY,
@@ -97,11 +103,12 @@ public class PlayerController : MonoBehaviour
 			scoreText.text = count.ToString();
 			timer = 0.0f;
 		}
-
 		if (other.CompareTag("Car"))
 		{
 			crashPositionY = transform.position.y;
 			getHurt = true;
+			PlayerAudioSource.clip = HurtSE;
+			PlayerAudioSource.Play();
 			PlayerAnimator.SetBool("GetHurt", true);
 			BackUpAccumulate += backupDistance;
 		}
