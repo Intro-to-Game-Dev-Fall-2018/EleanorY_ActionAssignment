@@ -15,7 +15,9 @@
 
 ---
 
-[Ver1.1_20180922](https://jiaxi-yang.itch.io/freeway-12)
+[Ver1.2_20180922](https://jiaxi-yang.itch.io/freeway-12)
+
+
      What I have added so far: 
      - Animation;
      - Audio;
