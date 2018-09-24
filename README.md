@@ -14,3 +14,12 @@
      - W/S for Player 1 to move. ↑/↓ for Player 2 to move.
 
 ---
+
+[Ver1.1_20180922](https://jiaxi-yang.itch.io/freeway-12)
+     What I have added so far: 
+     - Animation;
+     - Audio;
+     
+     
+ ---
+
