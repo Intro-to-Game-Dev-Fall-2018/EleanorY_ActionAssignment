@@ -120,11 +120,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Up: 119
   Down: 115
-  speed: 2.5
+  speed: 3
   backupDistance: 0.6
   scoreText: {fileID: 0}
-  ScoreSE: {fileID: 8300000, guid: 58a60f9eb049d47f0a1aa8be09f3d143, type: 3}
-  HurtSE: {fileID: 8300000, guid: 4cbf8dc5f458747b681e57ed92a82469, type: 3}
+  ScoreSE: {fileID: 8300000, guid: 9963d5924201241fc9455159d9828a73, type: 3}
+  HurtSE: {fileID: 8300000, guid: b918a50fc52504429ae50729d1003fe1, type: 3}
 --- !u!212 &212691417706550620
 SpriteRenderer:
   m_ObjectHideFlags: 1

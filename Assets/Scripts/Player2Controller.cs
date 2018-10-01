@@ -1,24 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
-{
+public class Player2Controller : MonoBehaviour {
 
-	public KeyCode Up;
+public KeyCode Up;
 	public KeyCode Down;
 	public float speed;
-	public float backupDistance;
-	private float BackUpAccumulate;
 
 	private float initialY;
 	private int count;
 
 	public Text scoreText;
-	private bool getHurt;
 	private float crashPositionY;
 
 	private float timer;
@@ -60,10 +54,8 @@ public class PlayerController : MonoBehaviour
 			count = 0;
 			scoreText.text = count.ToString();
 			timer = 2.0f;
-			getHurt = false;
 			PlayerAnimator.SetBool("GetHurt", false);
 		}
-		
 		
 		if (GameStart)
 		{
@@ -73,8 +65,9 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				if (!getHurt && timer >= 2.0f)
+				if (timer >= 2.0f)
 				{
+					PlayerAnimator.SetBool("GetHurt", false);
 					if (Input.GetKey(Up))
 					{
 						transform.position = new Vector3(
@@ -91,12 +84,7 @@ public class PlayerController : MonoBehaviour
 						);
 					}
 				}
-				else
-				{
-					Backwards();
-				}
 			}
-		
 			
 		}
 		
@@ -120,45 +108,17 @@ public class PlayerController : MonoBehaviour
 		}
 		if (other.CompareTag("Car"))
 		{
-			crashPositionY = transform.position.y;
-			getHurt = true;
-			PlayerAudioSource.clip = HurtSE;
-			PlayerAudioSource.Play();
-			PlayerAnimator.SetBool("GetHurt", true);
-			BackUpAccumulate += backupDistance;
-		}
-
-	}
-
-	private void Backwards()
-	{
-		if (transform.position.y > initialY)
-		{
-			if (transform.position.y > crashPositionY - BackUpAccumulate)
-			{
-				transform.position = new Vector3(
-					transform.position.x,
-					transform.position.y - speed * Time.deltaTime,
-					transform.position.z
-				);
-			} else 
-			{
-				getHurt = false;
-				PlayerAnimator.SetBool("GetHurt", false);
-				BackUpAccumulate = 0;
-				timer = 1.5f;
-			}
-		}
-		else
-		{
 			transform.position = new Vector3(
 				transform.position.x,
 				initialY,
-				transform.position.z);
-			getHurt = false;
-			PlayerAnimator.SetBool("GetHurt", false);
-			BackUpAccumulate = 0;
+				transform.position.z
+			);
 			timer = 1.5f;
+			PlayerAudioSource.clip = HurtSE;
+			PlayerAudioSource.Play();
+			PlayerAnimator.SetBool("GetHurt", true);
 		}
+
 	}
 }
+
