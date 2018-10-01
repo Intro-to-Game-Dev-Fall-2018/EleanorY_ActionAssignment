@@ -1373,6 +1373,11 @@ Prefab:
       propertyPath: ScoreSE
       value: 
       objectReference: {fileID: 8300000, guid: 9963d5924201241fc9455159d9828a73, type: 3}
+    - target: {fileID: 114023939663337362, guid: 6f50e62d8857542bcbb64be15b0b2769,
+        type: 2}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 211883858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f50e62d8857542bcbb64be15b0b2769, type: 2}
   m_IsPrefabAsset: 0
