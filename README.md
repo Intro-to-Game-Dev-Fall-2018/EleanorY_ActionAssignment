@@ -21,7 +21,17 @@
      What I have added so far: 
      - Animation;
      - Audio;
-     
-     
+       
+ ---
+ 
+[Ver1.3_20180930](https://jiaxi-yang.itch.io/freeway-13)
+
+
+     What I have fixed so far: 
+     - Audio for changing levels;
+     - Level Reset;
+     - Individual behavior for Player 2;
+     - Adjusted player's size and cars interval.
+       
  ---
 
