@@ -163,6 +163,8 @@ MonoBehaviour:
   LevelText: {fileID: 996717838}
   Score_1: {fileID: 1844802213}
   Score_2: {fileID: 211883856}
+  Bgm: {fileID: 8300000, guid: 8ed84edf7f46a4c92bab3f8f75794446, type: 3}
+  SwapScene: {fileID: 8300000, guid: 816a315ca24da4680838fb6a730cffa9, type: 3}
 --- !u!82 &126931757
 AudioSource:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -832,6 +834,21 @@ Prefab:
       propertyPath: HurtSE
       value: 
       objectReference: {fileID: 8300000, guid: b918a50fc52504429ae50729d1003fe1, type: 3}
+    - target: {fileID: 114023939663337362, guid: 6f50e62d8857542bcbb64be15b0b2769,
+        type: 2}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 211883858}
+    - target: {fileID: 114023939663337362, guid: 6f50e62d8857542bcbb64be15b0b2769,
+        type: 2}
+      propertyPath: HurtSE
+      value: 
+      objectReference: {fileID: 8300000, guid: b918a50fc52504429ae50729d1003fe1, type: 3}
+    - target: {fileID: 114023939663337362, guid: 6f50e62d8857542bcbb64be15b0b2769,
+        type: 2}
+      propertyPath: ScoreSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 9963d5924201241fc9455159d9828a73, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f50e62d8857542bcbb64be15b0b2769, type: 2}
   m_IsPrefabAsset: 0
