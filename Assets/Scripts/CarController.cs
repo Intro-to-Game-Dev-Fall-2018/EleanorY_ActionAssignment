@@ -5,23 +5,13 @@ using UnityEngine.Analytics;
 
 public class CarController : MonoBehaviour
 {
-	public float speed;
-	private bool gameStart;
-
+	public float Speed;
 	public float InitialX;
-	
-	
-	// Use this for initialization
 
-	
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		transform.position = new Vector3(
-			transform.position.x  + speed * Time.deltaTime,
+			transform.position.x  + Speed * Time.deltaTime,
 			transform.position.y,
 			transform.position.z
 		);

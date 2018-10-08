@@ -3,7 +3,17 @@ guid: 83a94d2cb547245a6aeee0bd254505de
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - LevelText: {instanceID: 0}
+  - Score1: {instanceID: 0}
+  - Score2: {instanceID: 0}
+  - WinText: {instanceID: 0}
+  - Player1: {instanceID: 0}
+  - Player2: {instanceID: 0}
+  - Bgm: {fileID: 8300000, guid: 8ed84edf7f46a4c92bab3f8f75794446, type: 3}
+  - SwapScene: {fileID: 8300000, guid: 816a315ca24da4680838fb6a730cffa9, type: 3}
+  - GameTimer: {instanceID: 0}
+  - WinFx: {fileID: 8300000, guid: 936f37c4fdcc7449399d0d8127699b25, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

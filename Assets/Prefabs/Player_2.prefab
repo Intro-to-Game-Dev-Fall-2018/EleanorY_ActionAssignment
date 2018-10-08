@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50244394938981770}
   - component: {fileID: 61463765100003672}
   - component: {fileID: 95828181783072256}
-  - component: {fileID: 114023939663337362}
+  - component: {fileID: 114075105225930504}
   m_Layer: 9
   m_Name: Player_2
   m_TagString: Player
@@ -107,7 +107,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114023939663337362
+--- !u!114 &114075105225930504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,15 +115,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1362377855244250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7391dc298a2e44e098e088228c09213f, type: 3}
+  m_Script: {fileID: 11500000, guid: 026f9fb9921ab420dac7a6904fefb25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player1: 0
   Up: 273
   Down: 274
-  speed: 3
-  scoreText: {fileID: 0}
-  ScoreSE: {fileID: 8300000, guid: 9963d5924201241fc9455159d9828a73, type: 3}
-  HurtSE: {fileID: 8300000, guid: b918a50fc52504429ae50729d1003fe1, type: 3}
+  Speed: 3
+  BackupDistance: 0
+  Count: {fileID: 0}
+  ScoreFx: {fileID: 8300000, guid: 9963d5924201241fc9455159d9828a73, type: 3}
+  HurtFx: {fileID: 8300000, guid: b918a50fc52504429ae50729d1003fe1, type: 3}
 --- !u!212 &212094528587519476
 SpriteRenderer:
   m_ObjectHideFlags: 1

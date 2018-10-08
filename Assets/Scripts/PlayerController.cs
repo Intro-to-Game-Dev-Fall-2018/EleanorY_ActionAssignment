@@ -8,85 +8,91 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 
+	public bool Player1;
+	
 	public KeyCode Up;
 	public KeyCode Down;
-	public float speed;
-	public float backupDistance;
-	private float BackUpAccumulate;
+	public float Speed;
+	public float BackupDistance;
+	private float _backUpAccumulate;
+	
+	
 
-	private float initialY;
-	private int count;
+	private float _initialY;
+	private int _count;
 
-	public Text scoreText;
-	private bool getHurt;
-	private float crashPositionY;
+	public Text Count;
+	private bool _getHurt;
+	private float _crashPositionY;
 
-	private float timer;
-	private bool GameStart = false;
+	private float _timer;
+	private float _gameTimer;
+	private bool _gameStart = false;
 
 
-	private Animator PlayerAnimator;
-	private AudioSource PlayerAudioSource;
-	public AudioClip ScoreSE;
-	public AudioClip HurtSE;
+	private Animator _playerAnimator;
+	private AudioSource _playerAudioSource;
+	public AudioClip ScoreFx;
+	public AudioClip HurtFx;
 	
 	
 	// Use this for initialization
 	void Start ()
 	{
-		initialY = -4.9f;
-		count = 0;
-		timer = 2.0f;
-		PlayerAnimator = GetComponent<Animator>();
-		PlayerAudioSource = GetComponent<AudioSource>();
-		PlayerAudioSource.clip = HurtSE;
+		_initialY = -4.9f;
+		_count = 0;
+		_timer = 2.0f;
+		_playerAnimator = GetComponent<Animator>();
+		_playerAudioSource = GetComponent<AudioSource>();
+		_playerAudioSource.clip = HurtFx;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GameStart && Input.GetKeyUp("2"))
+		if (!_gameStart && Input.GetKeyUp("2"))
 		{
-			GameStart = true;
-			PlayerAnimator.SetTrigger("Start");
+			_gameStart = true;
+			_playerAnimator.SetTrigger("Start");
 		}
 		
-		if (GameStart && Input.GetKeyUp("2"))
+		if (_gameStart && Input.GetKeyUp("2"))
 		{
 			transform.position = new Vector3(
 				transform.position.x,
-				initialY,
+				_initialY,
 				transform.position.z
 			);
-			count = 0;
-			scoreText.text = count.ToString();
-			timer = 2.0f;
-			getHurt = false;
-			PlayerAnimator.SetBool("GetHurt", false);
+			_count = 0;
+			Count.text = _count.ToString();
+			_timer = 2.0f;
+			_getHurt = false;
+			_playerAnimator.SetBool("GetHurt", false);
 		}
 		
 		
-		if (GameStart)
+		if (_gameStart)
 		{
-			if (timer < 2.0f)
+			if (_timer < 2.0f)
 			{
-				timer += Time.deltaTime;
+				_timer += Time.deltaTime;
 			}
 			else
 			{
-				if (!getHurt && timer >= 2.0f)
+				if (!_getHurt && _timer >= 2.0f)
 				{
+					_playerAnimator.SetBool("GetHurt", false);
 					if (Input.GetKey(Up))
 					{
 						transform.position = new Vector3(
 							transform.position.x,
-							transform.position.y + speed * Time.deltaTime,
+							transform.position.y + Speed * Time.deltaTime,
 							transform.position.z
 						);
-					} else if (Input.GetKey(Down) && transform.position.y >= initialY)
+					} else if (Input.GetKey(Down) && transform.position.y >= _initialY)
 					{
 						transform.position = new Vector3(
 							transform.position.x,
-							transform.position.y - speed * Time.deltaTime,
+							transform.position.y - Speed * Time.deltaTime,
 							transform.position.z
 						);
 					}
@@ -96,8 +102,6 @@ public class PlayerController : MonoBehaviour
 					Backwards();
 				}
 			}
-		
-			
 		}
 		
 	}
@@ -107,58 +111,68 @@ public class PlayerController : MonoBehaviour
 		
 		if (other.CompareTag("Background"))
 		{
-			PlayerAudioSource.clip = ScoreSE;
-			PlayerAudioSource.Play();
+			_playerAudioSource.PlayOneShot(ScoreFx);
 			transform.position = new Vector3(
 				transform.position.x,
-				initialY,
+				_initialY,
 				transform.position.z
 			);
-			count++;
-			scoreText.text = count.ToString();
-			timer = 0.0f;
+			_count++;
+			Count.text = _count.ToString();
+			_timer = 0.0f;
 		}
 		if (other.CompareTag("Car"))
 		{
-			crashPositionY = transform.position.y;
-			getHurt = true;
-			PlayerAudioSource.clip = HurtSE;
-			PlayerAudioSource.Play();
-			PlayerAnimator.SetBool("GetHurt", true);
-			BackUpAccumulate += backupDistance;
+			if (Player1)
+			{
+				_crashPositionY = transform.position.y;
+				_getHurt = true;
+				_backUpAccumulate += BackupDistance;
+			}
+			else
+			{
+				transform.position = new Vector3(
+					transform.position.x,
+					_initialY,
+					transform.position.z
+				);
+				_timer = 1.5f;
+			}
+			_playerAudioSource.PlayOneShot(HurtFx);
+			_playerAnimator.SetBool("GetHurt", true);
 		}
 
 	}
 
 	private void Backwards()
 	{
-		if (transform.position.y > initialY)
+		if (transform.position.y > _initialY)
 		{
-			if (transform.position.y > crashPositionY - BackUpAccumulate)
+			if (transform.position.y > _crashPositionY - _backUpAccumulate)
 			{
 				transform.position = new Vector3(
 					transform.position.x,
-					transform.position.y - speed * Time.deltaTime,
+					transform.position.y - Speed * Time.deltaTime,
 					transform.position.z
 				);
 			} else 
 			{
-				getHurt = false;
-				PlayerAnimator.SetBool("GetHurt", false);
-				BackUpAccumulate = 0;
-				timer = 1.5f;
+				_getHurt = false;
+				_playerAnimator.SetBool("GetHurt", false);
+				_backUpAccumulate = 0;
+				_timer = 1.5f;
 			}
 		}
 		else
 		{
 			transform.position = new Vector3(
 				transform.position.x,
-				initialY,
+				_initialY,
 				transform.position.z);
-			getHurt = false;
-			PlayerAnimator.SetBool("GetHurt", false);
-			BackUpAccumulate = 0;
-			timer = 1.5f;
+			_getHurt = false;
+			_playerAnimator.SetBool("GetHurt", false);
+			_backUpAccumulate = 0;
+			_timer = 1.5f;
 		}
 	}
 }
