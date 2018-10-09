@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 	private bool _gameStart = false;
 
 
-	private Animator _playerAnimator;
 	private AudioSource _playerAudioSource;
 	public AudioClip ScoreFx;
 	public AudioClip HurtFx;
@@ -39,10 +38,9 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		_initialY = -4.9f;
+		_initialY = transform.position.y;
 		_count = 0;
 		_timer = 2.0f;
-		_playerAnimator = GetComponent<Animator>();
 		_playerAudioSource = GetComponent<AudioSource>();
 		_playerAudioSource.clip = HurtFx;
 	}
@@ -52,7 +50,6 @@ public class PlayerController : MonoBehaviour
 		if (!_gameStart && Input.GetKeyUp("2"))
 		{
 			_gameStart = true;
-			_playerAnimator.SetTrigger("Start");
 		}
 		
 		if (_gameStart && Input.GetKeyUp("2"))
@@ -66,7 +63,6 @@ public class PlayerController : MonoBehaviour
 			Count.text = _count.ToString();
 			_timer = 2.0f;
 			_getHurt = false;
-			_playerAnimator.SetBool("GetHurt", false);
 		}
 		
 		
@@ -80,7 +76,6 @@ public class PlayerController : MonoBehaviour
 			{
 				if (!_getHurt && _timer >= 2.0f)
 				{
-					_playerAnimator.SetBool("GetHurt", false);
 					if (Input.GetKey(Up))
 					{
 						transform.position = new Vector3(
@@ -121,7 +116,7 @@ public class PlayerController : MonoBehaviour
 			Count.text = _count.ToString();
 			_timer = 0.0f;
 		}
-		if (other.CompareTag("Car"))
+		if (other.CompareTag("Frog"))
 		{
 			if (Player1)
 			{
@@ -139,7 +134,6 @@ public class PlayerController : MonoBehaviour
 				_timer = 1.5f;
 			}
 			_playerAudioSource.PlayOneShot(HurtFx);
-			_playerAnimator.SetBool("GetHurt", true);
 		}
 
 	}
@@ -158,7 +152,6 @@ public class PlayerController : MonoBehaviour
 			} else 
 			{
 				_getHurt = false;
-				_playerAnimator.SetBool("GetHurt", false);
 				_backUpAccumulate = 0;
 				_timer = 1.5f;
 			}
@@ -170,7 +163,6 @@ public class PlayerController : MonoBehaviour
 				_initialY,
 				transform.position.z);
 			_getHurt = false;
-			_playerAnimator.SetBool("GetHurt", false);
 			_backUpAccumulate = 0;
 			_timer = 1.5f;
 		}

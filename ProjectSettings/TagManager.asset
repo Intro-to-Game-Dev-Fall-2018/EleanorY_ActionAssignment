@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Background
   - Car
+  - Frog
   layers:
   - Default
   - TransparentFX

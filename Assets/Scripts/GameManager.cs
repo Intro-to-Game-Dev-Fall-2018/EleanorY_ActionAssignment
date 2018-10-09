@@ -8,9 +8,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	private CarController[] _carScripts;
-	private GameObject[] _cars;
-	private Vector3[] _carsInitialTransform;
+	private FrogController[] _frogScripts;
+	private GameObject[] _frogs;
+	private Vector3[] _frogsInitialTransform;
 
 	public GameObject LevelText;
 	public Text Score1;
@@ -49,12 +49,12 @@ public class GameManager : MonoBehaviour
 		Score1.enabled = false;
 		Score2.enabled = false;
 		WinText.enabled = false;
-		_cars = GameObject.FindGameObjectsWithTag("Car");
-		_carScripts = new CarController[_cars.Length];
-		_carsInitialTransform = new Vector3[_cars.Length];
-		for(var i = 0; i < _cars.Length; i++)
+		_frogs = GameObject.FindGameObjectsWithTag("Frog");
+		_frogScripts = new FrogController[_frogs.Length];
+		_frogsInitialTransform = new Vector3[_frogs.Length];
+		for(var i = 0; i < _frogs.Length; i++)
 		{
-			_carsInitialTransform[i] = _cars[i].GetComponent<Transform>().position;
+			_frogsInitialTransform[i] = _frogs[i].GetComponent<Transform>().position;
 		}
 
 		_player1Position = Player1.transform.position;
@@ -94,14 +94,14 @@ public class GameManager : MonoBehaviour
 			Player2.SetActive(true);
 			Player1.transform.position = _player1Position;
 			Player2.transform.position = _player2Position;
-			for (var i = 0; i < _cars.Length; i++)
+			for (var i = 0; i < _frogs.Length; i++)
 			{
-				_carScripts[i] = _cars[i].GetComponent<CarController>();
-				_carScripts[i].enabled = true;
+				_frogScripts[i] = _frogs[i].GetComponent<FrogController>();
+				_frogScripts[i].enabled = true;
 			}
-			for (var i = 0; i < _cars.Length; i++)
+			for (var i = 0; i < _frogs.Length; i++)
 			{
-				_cars[i].transform.position = _carsInitialTransform[i];
+				_frogs[i].transform.position = _frogsInitialTransform[i];
 			}
 			WinText.enabled = false;
 			_gameTimer = GameLength;
