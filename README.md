@@ -34,4 +34,17 @@
      - Adjusted player's size and cars interval.
        
  ---
+ 
+ [Ver1.4_20181006](https://jiaxi-yang.itch.io/freeway-14)
+
+
+    Final Version of Original Game.
+    Added Winning condition.
+       
+ ---
+ 
+  [Ver2.1_20181007](https://jiaxi-yang.itch.io/freeway-customized)
+
+
+    Customized  Version.
 
